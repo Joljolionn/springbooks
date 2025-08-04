@@ -121,7 +121,7 @@ Para executar todos os testes:
 | ------ | ------------------- | ------------------------------ |
 | GET    | `/authors`      | Listar autores (não paginado)  |
 | GET    | `/authors/{id}` | Busca autor no banco           |
-| POST   | `/authors/{id}` | Criar novo autor               |
+| POST   | `/authors     ` | Criar novo autor               |
 | PUT    | `/authors/{id}` | Atualiza um autor por completo |
 | PATCH  | `/authors/{id}` | Atualiza um autor parcialmente |
 | DELETE | `/authors/{id}` | Deleta um autor                |
