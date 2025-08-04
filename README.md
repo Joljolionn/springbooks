@@ -127,8 +127,7 @@ Para executar todos os testes:
 | DELETE | `/authors/{id}` | Deleta um autor                |
 | GET    | `/books`        | Listar livros (paginado)       |
 | GET    | `/books/{isbn}` | Busca livro no banco           |
-| POST   | `/books/{isbn}` | Criar novo livro               |
-| PUT    | `/books/{isbn}` | Atualiza um livro por completo |
+| PUT    | `/books/{isbn}` | Cria ou atualiza um livro por completo |
 | PATCH  | `/books/{isbn}` | Atualiza um livro parcialmente |
 | DELETE | `/books/{isbn}` | Deleta um livro                |
 
