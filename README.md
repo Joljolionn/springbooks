@@ -144,12 +144,6 @@ Para executar todos os testes:
 
 ---
 
-## 📜 Considerações Finais
-
-Este projeto foi desenvolvido como um **exercício prático de domínio avançado do ecossistema Spring Boot**, aplicando conceitos utilizados em ambientes corporativos. A arquitetura em camadas, a cobertura de testes e a configuração dockerizada foram implementadas com o intuito de refletir um cenário profissional, mesmo em um domínio simples.
-
----
-
 ## 🗂️ Estrutura de Arquivos (Nível Alto)
 
 ```
