@@ -32,6 +32,10 @@ Embora o domínio seja simples, o projeto foi estruturado para refletir um ambie
 - **MockMvc** — Testes de integração das APIs REST.
 - **Testcontainers** (opcional para expandir) — Para isolar testes de integração reais com containers.
 
+### 🧭 Documentação da API
+
+- **springdoc-openapi** — Gera automaticamente a especificação OpenAPI e a UI Swagger (Swagger UI).→ Endpoints gerados: /v3/api-docs (JSON) e /swagger-ui/index.html (UI).
+
 ---
 
 ## 🏗️ Arquitetura do Projeto
@@ -42,7 +46,9 @@ O projeto foi estruturado em **camadas bem definidas**, seguindo boas práticas 
 
 ```
 src/main/java/com/joljolionn/postgresjpa/
- ├── controllers/      → Controllers REST
+ ├── controllers/
+ │    ├── docs/        → Interfaces de documentação (Swagger) (ex: BookControllerDocs.java)
+ │    └── impl/        → Implementações reais dos controllers (ex: BookControllerImpl.java)
  ├── domain/
  │    ├── dtos/         → DTOs (Data Transfer Objects)
  │    └── entities/     → JPA Entities
@@ -75,6 +81,7 @@ src/test/java/com/joljolionn/postgresjpa/
 - Testes de Integração com **MockMvc** (simulando requisições HTTP reais).
 - Configuração de ambiente com **Docker Compose**.
 - Utilização de Profiles (dev/test/prod) via `application.properties` e Docker.
+- Documentação automática da API com **OpenAPI / Swagger** (springdoc-openapi).
 
 ---
 
@@ -101,7 +108,11 @@ spring.jpa.hibernate.ddl-auto=update
 ./mvnw spring-boot:run
 ```
 
-A API estará acessível em: `http://localhost:8080`
+#### A API estará acessível em: `http://localhost:8080`
+
+#### Swagger UI (web): http://localhost:8080/swagger-ui/index.html  (também pode funcionar /swagger-ui.html dependendo da versão)
+
+#### Especificação OpenAPI (JSON): http://localhost:8080/v3/api-docs
 
 ---
 
@@ -141,6 +152,7 @@ Para executar todos os testes:
 - **Separação de responsabilidades** com DTOs, Mappers e Configurations.
 - **Testes Automatizados Profissionais** (MockMvc, Mockito, Repositories).
 - **Infraestrutura dockerizada**, com isolamento de ambiente próximo ao de produção.
+- **Documentação padronizada de APIs** para melhor mantenabilidade e facilitar visualização
 
 ---
 
@@ -157,7 +169,7 @@ Este projeto foi desenvolvido como um **exercício prático de domínio avançad
  ┣ 📂 src/
  ┃ ┣ 📂 main/
  ┃ ┃ ┣ 📂 java/com/joljolionn/postgresjpa/
- ┃ ┃ ┃ ┣ 📂 controllers/
+ ┃ ┃ ┃ ┣ 📂 controllers/{docs, impl}/
  ┃ ┃ ┃ ┣ 📂 domain/{dtos, entities}/
  ┃ ┃ ┃ ┣ 📂 mappers/{impl}/
  ┃ ┃ ┃ ┣ 📂 repositories/
