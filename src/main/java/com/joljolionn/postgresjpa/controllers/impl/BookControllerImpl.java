@@ -1,7 +1,5 @@
-package com.joljolionn.postgresjpa.controllers;
+package com.joljolionn.postgresjpa.controllers.impl;
 
-
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;
@@ -16,29 +14,30 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.joljolionn.postgresjpa.controllers.docs.BookControllerDocs;
 import com.joljolionn.postgresjpa.domain.dtos.BookDto;
 import com.joljolionn.postgresjpa.services.BookService;
 
 /**
- * BookController
+ * BookControllerImpl
  */
 @RestController
-public class BookController {
+public class BookControllerImpl implements BookControllerDocs {
 
     private BookService bookService;
 
-    BookController(BookService bookService) {
+    BookControllerImpl(BookService bookService) {
         this.bookService = bookService;
     }
 
     @PutMapping(path = "/books/{isbn}")
     public ResponseEntity<BookDto> createUpdateBook(
-            @PathVariable("isbn") String isbn, 
+            @PathVariable("isbn") String isbn,
             @RequestBody BookDto book) {
-            if (bookService.isExists(isbn)) {
-                return new ResponseEntity<>(bookService.createUpdateBook(isbn, book), HttpStatus.OK);
-            } 
-                return new ResponseEntity<>(bookService.createUpdateBook(isbn, book), HttpStatus.CREATED);
+        if (bookService.isExists(isbn)) {
+            return new ResponseEntity<>(bookService.createUpdateBook(isbn, book), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(bookService.createUpdateBook(isbn, book), HttpStatus.CREATED);
     }
 
     @GetMapping(path = "/books")
@@ -47,7 +46,8 @@ public class BookController {
     }
 
     @GetMapping(path = "/books/{isbn}")
-    public ResponseEntity<BookDto> getBook(@PathVariable("isbn") String isbn) {
+    public ResponseEntity<BookDto> getBook(
+            @PathVariable("isbn") String isbn) {
         Optional<BookDto> result = bookService.findOne(isbn);
         return result.map(book -> {
             return new ResponseEntity<>(book, HttpStatus.OK);
@@ -55,7 +55,9 @@ public class BookController {
     }
 
     @PatchMapping(path = "/books/{isbn}")
-    public ResponseEntity<BookDto> partialUpdateBook(@PathVariable("isbn") String isbn, @RequestBody BookDto bookDto) {
+    public ResponseEntity<BookDto> partialUpdateBook(
+            @PathVariable("isbn") String isbn,
+            @RequestBody BookDto bookDto) {
         if (!bookService.isExists(isbn)) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -63,11 +65,11 @@ public class BookController {
     }
 
     @DeleteMapping(path = "/books/{isbn}")
-    public ResponseEntity<BookDto> deleteBook(@PathVariable("isbn") String isbn) {
+    public ResponseEntity<BookDto> deleteBook(
+            @PathVariable("isbn") String isbn) {
         if (!bookService.isExists(isbn)) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        } 
-
+        }
         return new ResponseEntity<>(bookService.deleteBook(isbn), HttpStatus.OK);
 
     }
