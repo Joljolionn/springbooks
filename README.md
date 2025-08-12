@@ -110,9 +110,9 @@ spring.jpa.hibernate.ddl-auto=update
 
 #### A API estará acessível em: `http://localhost:8080`
 
-#### Swagger UI (web): http://localhost:8080/swagger-ui/index.html  (também pode funcionar /swagger-ui.html dependendo da versão)
+#### Swagger UI (web): `http://localhost:8080/swagger-ui/index.html`  (também pode funcionar /swagger-ui.html dependendo da versão)
 
-#### Especificação OpenAPI (JSON): http://localhost:8080/v3/api-docs
+#### Especificação OpenAPI (JSON): `http://localhost:8080/v3/api-docs`
 
 ---
 
