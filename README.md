@@ -132,14 +132,13 @@ Para executar todos os testes:
 | ------ | ------------------- | ------------------------------ |
 | GET    | `/authors`      | Listar autores (não paginado)  |
 | GET    | `/authors/{id}` | Busca autor no banco           |
-| POST   | `/authors/{id}` | Criar novo autor               |
+| POST   | `/authors     ` | Criar novo autor               |
 | PUT    | `/authors/{id}` | Atualiza um autor por completo |
 | PATCH  | `/authors/{id}` | Atualiza um autor parcialmente |
 | DELETE | `/authors/{id}` | Deleta um autor                |
 | GET    | `/books`        | Listar livros (paginado)       |
 | GET    | `/books/{isbn}` | Busca livro no banco           |
-| POST   | `/books/{isbn}` | Criar novo livro               |
-| PUT    | `/books/{isbn}` | Atualiza um livro por completo |
+| PUT    | `/books/{isbn}` | Cria ou atualiza um livro por completo |
 | PATCH  | `/books/{isbn}` | Atualiza um livro parcialmente |
 | DELETE | `/books/{isbn}` | Deleta um livro                |
 
@@ -153,12 +152,6 @@ Para executar todos os testes:
 - **Testes Automatizados Profissionais** (MockMvc, Mockito, Repositories).
 - **Infraestrutura dockerizada**, com isolamento de ambiente próximo ao de produção.
 - **Documentação padronizada de APIs** para melhor mantenabilidade e facilitar visualização
-
----
-
-## 📜 Considerações Finais
-
-Este projeto foi desenvolvido como um **exercício prático de domínio avançado do ecossistema Spring Boot**, aplicando conceitos utilizados em ambientes corporativos. A arquitetura em camadas, a cobertura de testes e a configuração dockerizada foram implementadas com o intuito de refletir um cenário profissional, mesmo em um domínio simples.
 
 ---
 
